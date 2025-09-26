@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost:3000/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
     <!-- Navbar dapat diambil dari getbootstrap -->
@@ -26,19 +26,6 @@
             </div>
         </div>
     </nav>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Tokoku</a>
-  
-  <form class="d-flex ms-auto" action="/search" method="get">
-    <input class="form-control me-2" 
-           type="search" 
-           name="q" 
-           placeholder="Cari produk..."
-           value="<%= query || '' %>">
-    <button class="btn btn-outline-success" type="submit">Search</button>   
-  </form>
-</nav>
-
     
     <%- body %>
     <script src="bootstrap/js/bootstrap.min.js"></script>
