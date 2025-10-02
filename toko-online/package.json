@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
+    "controllers": "^0.0.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
