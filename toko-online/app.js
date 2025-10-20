@@ -8,14 +8,16 @@ var logger = require('morgan');
 var indexRouter = require('./app_toko_online/routes/index');
 var usersRouter = require('./app_toko_online/routes/users');
 var productRouter = require("./app_toko_online/routes/product"); //letakkan di atas agar rapi
+var apiProductRouter = require("./app_toko_online/routes/api/product");
 var engine = require('ejs-blocks'); //menggunakan ejs block
 var app = express();
+
+require("./app_toko_online/models/db"); // panggil db
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_toko_online', 'views')); //perbaikan 1
 app.engine('ejs', engine);  //daftarkan engine ejs block
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,24 +1,21 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var products = require('../../data/product.json');
-var Product = require('../models/product');
+var productsController = require("../../data/products.json");
 
-// route test
-router.get('/all', async function(req, res, next) {
-    try {
-        const prod = await Product.find({}); // untuk mengambil seluruh data dari collection
-        res.render('index', {
-            title: 'Toko Online Sederhana',
-            products: prod
-        });
-    } catch (err) {
-        res.status(500).send('Gagal memuat produk');
-    }
-});
-router.get('/tst', function(req, res, next) {
-    res.send('respond with a resource');
-});
-    
-// route untuk menampilkan semua produk
+router.get("/apiall", productController.apiall);
+router.get("/all", productController.index);
+router.get("/:id", productController.detail);
+
+
+//url create - POST (/api/produk)
+router.post("/", productController.create);
+//url read all - Get ("/api/produk")
+router.get("/", productsController.all);
+//url read one - detail -GET (/api/produk/:id)
+router.get("/:id", productsController.detailproduk);
+//url update - PUT (/api/produk/:id)
+router.put("/:id", productsController.update);
+//url delete - DELETE (/api/produk/:id)
+router.delete("/:id", productsController.remove);
 
 module.exports = router;

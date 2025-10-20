@@ -1,4 +1,4 @@
-var products = require('../../data/product.json');
+var products = require('../../data/products.json');
 
 const index = (req, res) => {
  	res.render('index', {
