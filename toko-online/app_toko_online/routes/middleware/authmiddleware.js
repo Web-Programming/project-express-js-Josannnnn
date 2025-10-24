@@ -1,12 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const orderController = require('../../controllers')
-
-router.post('/', orderController.create);
-
-router.get('/', orderController.all);
-router.get('/:id', orderController.detail);
-router.put('/id', orderController.update);
-
-module.exports = router;
-
+exports.adminOnly = (req, res, next) => {
+  const isAdmin = req.body.isAdmin; // Contoh: { "isAdmin": true }
+  if (isAdmin === true) {
+    console.log('Middleware: Akses Admin Diberikan.');
+    next(); // Lanjutkan
+  } else {
+    // 403 Forbidden
+    return res.status(403).json({ 
+      success: false, 
+      message: 'Akses Ditolak. Endpoint ini membutuhkan hak Admin.' 
+    });
+  }
+};

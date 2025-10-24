@@ -1,21 +1,20 @@
 const express = require("express");
-const routers = express.Router();
-
+const router = express.Router();
 const userController = require("../../controllers/user");
 
-// url create - Post (/api/produk)
-routers.post("/",userController.create)
+//url create - POST (/api/user)
+router.post("/", userController.create);
 
-// url read all - Get (/api/produk)
-routers.get("/", userController.apiall);
+//url read all - GET (/api/user)
+router.get("/", userController.all);
 
-// url read one - detail - Get (api/produk/id)
-routers.get("/:id",userController.getById);
+//url read one - detail - GET (/api/user/:id)
+router.get("/:id", userController.detailuser);
 
-// url update - Put (/api/produk/:id)
-routers.put("/:id",userController.update);
+//url update - PUT (/api/user/:id)
+router.put("/:id", userController.update);
 
-// url delete -Delete (/api/produk/:id)
-routers.delete("/:id",userController.remove);
+//url delete - DELETE (/api/user/:id)
+router.delete("/:id", userController.remove);
 
-module.exports = routers;
+module.exports = router;

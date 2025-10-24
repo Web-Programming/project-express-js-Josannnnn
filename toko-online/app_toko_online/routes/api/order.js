@@ -1,21 +1,22 @@
-const express = require("express");
-const routers = express.Router();
+const express = require('express');
+const router = express.Router();
+const orderController = require('../../controllers/order');
+const auth = require('../middleware/authMiddleware');
 
-const orderController = require("../../controllers/order");
+// @route   POST /api/orders
+// @desc    Membuat Pesanan Baru
+router.post('/', auth.adminOnly, orderController.create);
 
-// url create - Post (/api/produk)
-routers.post("/",orderController.create)
+// @route   GET /api/orders
+// @desc    Mengambil Semua Pesanan (Dibatasi Admin)
+router.get('/', orderController.all);
 
-// url read all - Get (/api/produk)
-routers.get("/", orderController.apiall);
+// @route   GET /api/orders/:id
+// @desc    Mengambil Detail Pesanan
+router.get('/:id', orderController.detail);
 
-// url read one - detail - Get (api/produk/id)
-routers.get("/:id",orderController.detailorder);
+// @route   PUT /api/orders/:id
+// @desc    Memperbarui Status Pesanan
+router.put('/:id', auth.adminOnly, orderController.update);
 
-// url update - Put (/api/produk/:id)
-routers.put("/:id",orderController.update);
-
-// url delete -Delete (/api/produk/:id)
-routers.delete("/:id",orderController.remove);
-
-module.exports = routers;
+module.exports = router;
